@@ -1,5 +1,9 @@
 import { Message, StreamingTextResponse } from "ai";
 import { OpenAI } from "llamaindex";
+import { LlamaDeuce } from "llamaindex";
+import { Anthropic } from "llamaindex";
+// import { Groq } from "@llamaindex/groq";
+import { Gemini, GEMINI_MODEL } from "@llamaindex/google";
 import { NextRequest, NextResponse } from "next/server";
 import { createChatEngine } from "./engine";
 import { LlamaIndexStream } from "./llamaindex-stream";
@@ -23,8 +27,24 @@ export async function POST(request: NextRequest) {
     }
 
     const llm = new OpenAI({
-      model: "gpt-3.5-turbo",
+      model: "gpt-4",
     });
+    // const llm = new OpenAI({
+    //   model: "gpt-3.5-turbo",
+    // });
+    // const llm = new Groq({
+    //   model: "llama3-70b-8192",
+    // });
+
+    // const llm = new Gemini({
+    //   model: GEMINI_MODEL.GEMINI_PRO,
+    // });
+    // const llm = new LlamaDeuce({
+    //   model: "Llama-2-13b-chat-4bit",
+    // });
+    // const llm = new Anthropic({
+    //   model: "claude-2",
+    // });
 
     const chatEngine = await createChatEngine(llm);
 
