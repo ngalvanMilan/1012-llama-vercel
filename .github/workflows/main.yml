@@ -7,6 +7,9 @@ on:
 jobs:
   review:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
 
     steps:
       - name: Checkout code
@@ -19,10 +22,11 @@ jobs:
 
       - name: Install dependencies
         run: |
-          apt-get update && apt-get install -y python3 python3-pip
-          pip3 install requests
+          python -m pip install --upgrade pip
+          pip install requests
 
       - name: Analyze PR with LLM
-        run: python3 review_pr.py
+        run: python review_pr.py
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
