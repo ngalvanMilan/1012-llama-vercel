@@ -24,7 +24,6 @@ async function getRuntime(func) {
   console.log("Generating storage context took: ");
   console.log("=======================================");
   setTimeout(() => {
-    console.log
     console.log("=======================================");
   }, 1000);
   const end = Date.now();
