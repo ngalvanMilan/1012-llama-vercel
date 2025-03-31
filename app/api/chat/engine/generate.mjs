@@ -20,6 +20,7 @@ dotenv.config();
 async function getRuntime(func) {
   const start = Date.now();
   await func();
+  console.log("Finished generating storage context.");
   const end = Date.now();
   return end - start;
 }
