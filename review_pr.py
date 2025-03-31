@@ -3,7 +3,7 @@ import requests
 
 def get_diff():
     # Obtiene el diff del pull request desde el entorno de GitHub
-    pr_diff = os.popen('git diff origin/main').read()
+    pr_diff = os.popen('git diff origin/master').read()
     return pr_diff
 
 def analyze_with_llm(diff):
