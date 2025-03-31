@@ -18,6 +18,7 @@ function createParser(res: AsyncGenerator<any>) {
       const text = trimStartOfStream(value ?? "");
       if (text) {
         controller.enqueue(text);
+        hola
       }
     },
   });
