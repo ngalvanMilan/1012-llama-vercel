@@ -2,8 +2,8 @@ import os
 import requests
 
 def get_diff():
-    # Obtiene el diff del pull request desde el entorno de GitHub
-    pr_diff = os.popen('git diff origin/master').read()
+    os.system("git fetch origin master:master")  # Asegúrate de obtener la rama base
+    pr_diff = os.popen("git diff master").read()
     return pr_diff
 
 def analyze_with_llm(diff):
